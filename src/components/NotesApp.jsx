@@ -82,9 +82,13 @@ class NotesApp extends React.Component {
         <div className="note-app__body">
           <NoteInput addNote={this.onAddNoteHandler} />
           <h2>Catatan Aktif</h2>
-          <div className="notes-list">
-            <NoteList data={activeNotes} onDelete={this.onDeleteHandler} onArchived={this.onArchiveHandler} />
-          </div>
+          {activeNotes.length !== 0 ? (
+            <div className="notes-list">
+              <NoteList data={activeNotes} onDelete={this.onDeleteHandler} onArchived={this.onArchiveHandler} />
+            </div>
+          ) : (
+            <p className="notes-list__empty-message">Tidak ada catatan</p>
+          )}
 
           <h2>Arsip</h2>
           {archivedNotes.length !== 0 ? (
